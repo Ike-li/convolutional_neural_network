@@ -1,0 +1,57 @@
+repos:
+  # Ruff 代码检查和格式化
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.11.3
+    hooks:
+      - id: ruff-format       # 运行 Ruff 格式化，自动调整代码格式
+      - id: ruff             # 运行 Ruff 检查并自动修复代码问题
+        args: [
+          --fix,
+          --select=E,F,W,D,UP,   # 添加 D 规则以检查文档字符串，添加 UP 规则以优化 Python 代码
+          --ignore=D100,D101,D102,D103,D104,D105,D107,D200,D202,D400,DCO010,DCO020,DCO030,DCO050,  # 忽略文档字符串规则
+          --fix-only,  # 只修复问题，不报告
+        ]
+
+  # Flake8 PEP8规范检查
+  - repo: https://github.com/pycqa/flake8
+    rev: 7.2.0
+    hooks:
+      - id: flake8
+        args: [
+          '--max-line-length=88',
+          '--extend-ignore=E203,D100,D101,D102,D103,D104,D105,D107,D200,D202,D400,DCO010,DCO020,DCO030,DCO050',  # 忽略文档字符串规则
+        ]
+        additional_dependencies: [
+          'flake8-docstrings',
+          'flake8-docstrings-complete',  # 添加更完整的文档字符串检查和修复
+        ]
+
+  # Commitizen 提交信息规范
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: v4.4.1
+    hooks:
+      - id: commitizen
+        stages: [commit-msg]
+
+  # 基本代码检查
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-ast
+      - id: check-json
+      - id: check-merge-conflict
+      - id: detect-private-key
+      - id: trailing-whitespace
+
+  # 本地 hooks
+  - repo: local
+    hooks:
+      # 代码覆盖率检查
+      - id: coverage
+        name: coverage
+        entry: bash -c 'cd src && coverage run --source=. --omit=mnist.py -m pytest && coverage report -m --fail-under 100'
+        language: system
+        types: [python]
+        pass_filenames: false
+        always_run: true
