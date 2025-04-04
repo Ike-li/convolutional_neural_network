@@ -50,7 +50,7 @@ repos:
       # 代码覆盖率检查
       - id: coverage
         name: coverage
-        entry: bash -c 'cd src && coverage run --source=. --omit=mnist.py -m pytest && coverage report -m --fail-under 100'
+        entry: bash -c 'cd src && coverage run --source=. -m pytest && coverage report -m --fail-under 100'
         language: system
         types: [python]
         pass_filenames: false

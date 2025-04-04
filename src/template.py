@@ -1,0 +1,2 @@
+class TestTemplate:
+    pass
