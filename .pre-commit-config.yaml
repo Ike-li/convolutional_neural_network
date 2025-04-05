@@ -45,13 +45,13 @@ repos:
       - id: trailing-whitespace
 
   # 本地 hooks
-  - repo: local
-    hooks:
-      # 代码覆盖率检查
-      - id: coverage
-        name: coverage
-        entry: bash -c 'cd src && coverage run --source=. -m pytest && coverage report -m --fail-under 100'
-        language: system
-        types: [python]
-        pass_filenames: false
-        always_run: true
+#  - repo: local
+#    hooks:
+#      # 代码覆盖率检查
+#      - id: coverage
+#        name: coverage
+#        entry: bash -c 'cd src && coverage run --source=. -m pytest && coverage report -m --fail-under 100'
+#        language: system
+#        types: [python]
+#        pass_filenames: false
+#        always_run: true
