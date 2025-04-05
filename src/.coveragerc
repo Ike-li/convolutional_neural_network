@@ -1,0 +1,24 @@
+[run]
+source = .
+omit = 
+    */site-packages/*
+    */dist-packages/*
+    */unitests/*
+    conftest.py
+    setup.py
+    venv/*
+    */restructure.py
+    */examples.py
+    */visualization.py
+
+[report]
+exclude_lines =
+    pragma: no cover
+    def __repr__
+    raise NotImplementedError
+    if __name__ == .__main__.:
+    pass
+    raise ImportError
+    except ImportError
+
+fail_under = 1 

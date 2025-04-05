@@ -1,19 +1,61 @@
 [tool.poetry]
-name = "template"
+name = "convolutional_neural_network"
 version = "0.1.0"
-description = "模板"
+description = "基于PyTorch的卷积神经网络，用于MNIST和Fashion-MNIST数据集的图像分类"
 authors = ["Ike-li <viktorl@163.com>"]
 readme = "../README.md"
+license = "MIT"
+repository = "https://github.com/Ike-li/convolutional_neural_network"
+packages = [{include = "cnn"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-
+torch = "^2.6.0"
+torchvision = "^0.21.0"
+numpy = "^2.2.0"
+matplotlib = "^3.10.0"
+pandas = "^2.2.0"
+scikit-learn = "^1.6.0"
+tqdm = "^4.66.0"
+typer = "^0.9.0"
+rich = "^13.7.0"
+tensorboard = "^2.17.0"
 
 [tool.poetry.group.dev.dependencies]
 pre-commit = "^4.2.0"
-pytest = "^8.3.5"
+pytest = "^8.3.0"
 coverage = "^7.8.0"
+black = "^24.3.0"
+isort = "^5.13.0"
+mypy = "^1.9.0"
+flake8 = "^7.0.0"
+jupyter = "^1.0.0"
+
+[tool.poetry.scripts]
+train = "cnn.main:main"
+validate = "cnn.verify_model:main"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 88
+target-version = ["py310"]
+include = '\.pyi?$'
+
+[tool.isort]
+profile = "black"
+line_length = 88
+multi_line_output = 3
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+
+[tool.pytest.ini_options]
+testpaths = ["unitests", "tests"]
+python_files = "test_*.py"
