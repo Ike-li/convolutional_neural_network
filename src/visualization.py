@@ -66,6 +66,7 @@ def plot_images(images, labels, predictions=None, classes=None, n=25):
                 plt.title(title)
 
     plt.tight_layout()
+    plt.savefig("images.png")  # 保存图像以满足测试要求
     plt.show()
 
 
@@ -111,7 +112,7 @@ def plot_confusion_matrix(model, data_loader, device, classes=None):
         plt.text(
             j,
             i,
-            format(cm[i, j], "d"),
+            str(int(cm[i, j])),  # 修复格式化问题，确保是整数字符串
             horizontalalignment="center",
             color="white" if cm[i, j] > thresh else "black",
         )
@@ -119,6 +120,7 @@ def plot_confusion_matrix(model, data_loader, device, classes=None):
     plt.tight_layout()
     plt.ylabel("真实标签")
     plt.xlabel("预测标签")
+    plt.savefig("confusion_matrix.png")  # 保存图像以满足测试要求
     plt.show()
 
 
@@ -171,6 +173,7 @@ def visualize_filters(model, layer_idx=0, n_filters=16):
 
     plt.suptitle(f"卷积层 {layer_idx + 1} 的过滤器")
     plt.tight_layout()
+    plt.savefig("filters.png")  # 保存图像以满足测试要求
     plt.show()
 
 
@@ -248,4 +251,5 @@ def visualize_feature_maps(model, data, device, layer_idx=0, n_maps=16):
 
     plt.suptitle(f"卷积层 {layer_idx + 1} 的特征图")
     plt.tight_layout()
+    plt.savefig("feature_maps.png")  # 保存图像以满足测试要求
     plt.show()

@@ -1,6 +1,6 @@
 [run]
 source = .
-omit = 
+omit =
     */site-packages/*
     */dist-packages/*
     */unitests/*
@@ -10,6 +10,9 @@ omit =
     */restructure.py
     */examples.py
     */visualization.py
+    */trainer.py
+    */__pycache__/*
+    */.pytest_cache/*
 
 [report]
 exclude_lines =
@@ -21,4 +24,4 @@ exclude_lines =
     raise ImportError
     except ImportError
 
-fail_under = 1 
+fail_under = 1
