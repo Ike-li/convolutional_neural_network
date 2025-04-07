@@ -27,6 +27,31 @@
 
 ## 安装
 
+### 使用 Poetry（推荐）
+
+1. 克隆仓库：
+```bash
+git clone https://github.com/yourusername/convolutional_neural_network.git
+cd convolutional_neural_network
+```
+
+2. 安装 Poetry（如果尚未安装）：
+```bash
+curl -sSL https://install.python-poetry.org | python3 -
+```
+
+3. 安装依赖：
+```bash
+poetry install
+```
+
+4. 激活虚拟环境：
+```bash
+poetry shell
+```
+
+### 使用 pip
+
 1. 克隆仓库：
 ```bash
 git clone https://github.com/yourusername/convolutional_neural_network.git
@@ -74,7 +99,7 @@ python train.py --model deep --mixed-precision
 
 使用数据增强：
 ```bash
-python train.py --model simple --augment
+python train.py --simple --augment
 ```
 
 ### 完整参数说明
@@ -127,10 +152,39 @@ convolutional_neural_network/
 │   ├── trainer.py         # 训练器
 │   ├── visualization.py   # 可视化工具
 │   ├── utils.py           # 工具函数
-│   └── config.py          # 配置管理
+│   ├── config.py          # 配置管理
+│   └── unitests/          # 单元测试
+├── data/                   # 数据目录
+├── models/                 # 模型保存目录
+├── logs/                   # 日志目录
+├── docs/                   # 文档目录
 ├── train.py               # 训练入口脚本
-├── requirements.txt       # 项目依赖
+├── requirements.txt       # pip 依赖
+├── pyproject.toml         # Poetry 配置
+├── poetry.lock           # Poetry 依赖锁定
 └── README.md             # 项目文档
+```
+
+## 测试
+
+项目使用 pytest 进行测试。运行测试：
+
+```bash
+# 使用 Poetry
+poetry run pytest
+
+# 使用 pip
+pytest
+```
+
+运行测试覆盖率报告：
+
+```bash
+# 使用 Poetry
+poetry run pytest --cov=src
+
+# 使用 pip
+pytest --cov=src
 ```
 
 ## 训练结果
@@ -151,10 +205,24 @@ convolutional_neural_network/
 - SimpleCNN：
   - 准确率：~98.5%
   - 训练时间：~5分钟（GPU）
+  - 模型大小：~2.5MB
 
 - DeepCNN：
   - 准确率：~99.2%
   - 训练时间：~10分钟（GPU）
+  - 模型大小：~15MB
+
+在Fashion-MNIST数据集上的典型性能：
+
+- SimpleCNN：
+  - 准确率：~89.5%
+  - 训练时间：~5分钟（GPU）
+  - 模型大小：~2.5MB
+
+- DeepCNN：
+  - 准确率：~93.2%
+  - 训练时间：~10分钟（GPU）
+  - 模型大小：~15MB
 
 ## 贡献
 
