@@ -18,7 +18,7 @@ from torch.cuda.amp import autocast, GradScaler
 import matplotlib.pyplot as plt
 from tqdm import tqdm
 
-from .config import Config, TrainingConfig
+from config import Config, TrainingConfig
 
 logger = logging.getLogger("CNN.trainer")
 

@@ -14,7 +14,7 @@ import torch
 from torch.utils.data import DataLoader, random_split, Dataset
 from torchvision import datasets, transforms
 
-from .config import Config, DataConfig
+from config import Config, DataConfig
 
 
 class CachedDataset(Dataset):

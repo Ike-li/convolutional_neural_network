@@ -10,11 +10,11 @@ from pathlib import Path
 
 import torch
 
-from .config import Config, ModelConfig, TrainingConfig, DataConfig
-from .models import get_model
-from .data_loader import get_data_loaders, get_dataset_classes
-from .trainer import Trainer
-from .visualization import plot_images, plot_confusion_matrix
+from config import Config, ModelConfig, TrainingConfig, DataConfig
+from models import get_model
+from data_loader import get_data_loaders, get_dataset_classes
+from trainer import Trainer
+from visualization import plot_images, plot_confusion_matrix
 
 
 def setup_logging(log_dir: str = "logs") -> None:
