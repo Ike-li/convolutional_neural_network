@@ -20,7 +20,7 @@ repos:
         args: [
           '--max-line-length=88',
           '--extend-ignore=E203,D100,D101,D102,D103,D104,D105,D107,D200,D202,D400,DCO010,DCO020,DCO030,DCO050,DCO023
-          DCO031',  # 忽略文档字符串规则
+          DCO031,DCO060',  # 忽略文档字符串规则
         ]
         additional_dependencies: [
           'flake8-docstrings',

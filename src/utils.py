@@ -1,3 +1,9 @@
+"""
+工具模块
+
+本模块提供基本的工具函数。
+"""
+
 import torch
 import torch.nn as nn
 from torchvision import datasets, transforms
@@ -54,7 +60,7 @@ def detailed_model_analysis(model, input_size=(1, 28, 28), device="cpu"):
         device: 计算设备
 
     Returns:
-        None，但打印出详细的模型分析信息
+        layer_outputs: 包含每一层输出的字典
     """
     print(f"\n{'=' * 30} 模型详细分析 {'=' * 30}")
     print(f"模型类型: {model.__class__.__name__}")

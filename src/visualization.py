@@ -1,3 +1,9 @@
+"""
+可视化模块
+
+本模块提供基本的可视化功能。
+"""
+
 import matplotlib.pyplot as plt
 import numpy as np
 import torch
@@ -66,8 +72,8 @@ def plot_images(images, labels, predictions=None, classes=None, n=25):
                 plt.title(title)
 
     plt.tight_layout()
-    plt.savefig("images.png")  # 保存图像以满足测试要求
-    plt.show()
+    plt.savefig("images.png")
+    plt.close()
 
 
 def plot_confusion_matrix(model, data_loader, device, classes=None):
@@ -112,7 +118,7 @@ def plot_confusion_matrix(model, data_loader, device, classes=None):
         plt.text(
             j,
             i,
-            str(int(cm[i, j])),  # 修复格式化问题，确保是整数字符串
+            str(int(cm[i, j])),
             horizontalalignment="center",
             color="white" if cm[i, j] > thresh else "black",
         )
@@ -120,8 +126,8 @@ def plot_confusion_matrix(model, data_loader, device, classes=None):
     plt.tight_layout()
     plt.ylabel("真实标签")
     plt.xlabel("预测标签")
-    plt.savefig("confusion_matrix.png")  # 保存图像以满足测试要求
-    plt.show()
+    plt.savefig("confusion_matrix.png")
+    plt.close()
 
 
 def visualize_filters(model, layer_idx=0, n_filters=16):
